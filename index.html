@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Hace que la página se adapte correctamente al teléfono -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti 💛</title>
+
+    <!-- Conexión con nuestro CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ========================================
+         FONDO DE DESTELLOS
+         ======================================== -->
+
+    <div class="fondo-destellos" id="fondoDestellos"></div>
+
+
+    <!-- ========================================
+         CONTENEDOR PRINCIPAL
+         ======================================== -->
+
+    <main class="app">
+
+
+        <!-- ========================================
+             PANTALLA 1 — INTRODUCCIÓN
+             ======================================== -->
+
+        <section class="pantalla pantalla-inicio" id="pantallaInicio">
+
+            <span class="destello">✦</span>
+
+            <h1>21 de septiembre</h1>
+
+            <p class="mensaje">
+                Tenía algo para ti,<br>
+                pero hay un pequeño<br>
+                problema...
+            </p>
+
+            <button class="boton-continuar" id="btnContinuar">
+                Continuar
+            </button>
+
+        </section>
+
+
+        <!-- ========================================
+             PANTALLA 2 — LA DISTANCIA
+             ======================================== -->
+
+        <section
+            class="pantalla pantalla-distancia oculta"
+            id="pantallaDistancia">
+
+            <span class="destello">✦</span>
+
+            <p class="texto-secundario">
+                Estamos como a
+            </p>
+
+            <h2>hora y media...</h2>
+
+            <p class="mensaje">
+                y llegar hasta allá solamente<br>
+                para darte algo estaba<br>
+                complicado 😂
+            </p>
+
+            <button class="boton-continuar" id="btnEntonces">
+                Entonces...
+            </button>
+
+        </section>
+
+
+        <!-- ========================================
+             PANTALLA 3 — LA IMPROVISACIÓN
+             ======================================== -->
+
+        <section
+            class="pantalla pantalla-improvisar oculta"
+            id="pantallaImprovisar">
+
+            <span class="destello">✦</span>
+
+            <p class="texto-secundario">
+                Así que...
+            </p>
+
+            <h2>Tuve que improvisar.</h2>
+
+            <div class="zona-planta" id="zonaPlanta">
+
+    <!-- Resplandor de la germinación -->
+    <div class="brillo-planta"></div>
+
+    <!-- Resplandor final de la floración -->
+    <div class="brillo-floracion"></div>
+
+    <!-- Planta completa -->
+    <svg
+        class="planta-svg"
+        viewBox="0 0 180 160"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true">
+
+        <!-- ========================================
+             PLANTA ORIGINAL
+             ======================================== -->
+
+        <!-- Semilla -->
+        <ellipse
+            class="semilla-svg"
+            cx="90"
+            cy="143"
+            rx="9"
+            ry="5"
+            transform="rotate(-15 90 143)"
+        />
+
+        <!-- Tallo principal -->
+        <path
+            class="tallo-svg"
+            d="
+                M 90 140
+                C 88 125, 94 115, 91 102
+                C 88 88, 96 77, 94 64
+                C 92 51, 98 39, 96 25
+            "
+        />
+
+        <!-- Hoja izquierda -->
+        <path
+            class="hoja-svg hoja-svg-izquierda"
+            d="
+                M 92 96
+                C 78 84, 62 85, 54 95
+                C 66 104, 81 105, 92 96
+                Z
+            "
+        />
+
+        <!-- Hoja derecha -->
+        <path
+            class="hoja-svg hoja-svg-derecha"
+            d="
+                M 94 67
+                C 105 54, 122 53, 131 61
+                C 121 72, 105 76, 94 67
+                Z
+            "
+        />
+
+        <!-- Punta del brote -->
+        <path
+            class="brote-svg"
+            d="
+                M 96 26
+                C 100 19, 106 16, 111 17
+            "
+        />
+
+
+        <!-- ========================================
+             RAMIFICACIONES PARA LAS FLORES
+             ======================================== -->
+
+        <!-- Rama izquierda inferior -->
+        <path
+            class="rama-svg rama-1"
+            d="
+                M 92 91
+                C 80 82, 70 72, 60 60
+            "
+        />
+
+        <!-- Rama derecha inferior -->
+        <path
+            class="rama-svg rama-2"
+            d="
+                M 94 79
+                C 108 71, 118 61, 126 49
+            "
+        />
+
+        <!-- Rama izquierda superior -->
+        <path
+            class="rama-svg rama-3"
+            d="
+                M 95 61
+                C 84 53, 77 43, 72 32
+            "
+        />
+
+        <!-- Rama derecha superior -->
+        <path
+            class="rama-svg rama-4"
+            d="
+                M 96 48
+                C 106 40, 112 31, 116 21
+            "
+        />
+
+
+        <!-- ========================================
+             CAPULLOS
+             ======================================== -->
+
+        <g class="capullo capullo-1">
+            <ellipse cx="60" cy="59" rx="7" ry="5" />
+        </g>
+
+        <g class="capullo capullo-2">
+            <ellipse cx="127" cy="48" rx="7" ry="5" />
+        </g>
+
+        <g class="capullo capullo-3">
+            <ellipse cx="72" cy="31" rx="7" ry="5" />
+        </g>
+
+        <g class="capullo capullo-4">
+            <ellipse cx="116" cy="20" rx="7" ry="5" />
+        </g>
+
+        <g class="capullo capullo-5">
+            <ellipse cx="96" cy="24" rx="7" ry="5" />
+        </g>
+
+
+        <!-- ========================================
+             FLOR 1 — IZQUIERDA INFERIOR
+             ======================================== -->
+
+        <g class="flor-svg flor-1" transform="translate(60 58)">
+
+            <g class="petalos">
+                <ellipse class="petalo" cx="0" cy="-9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="0" cy="9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="-9" cy="0" rx="9" ry="4" />
+                <ellipse class="petalo" cx="9" cy="0" rx="9" ry="4" />
+
+                <ellipse
+                    class="petalo"
+                    cx="-6.5"
+                    cy="-6.5"
+                    rx="4"
+                    ry="8"
+                    transform="rotate(-45 -6.5 -6.5)"
+                />
+
+                <ellipse
+                    class="petalo"
+                    cx="6.5"
+                    cy="-6.5"
+                    rx="4"
+                    ry="8"
+                    transform="rotate(45 6.5 -6.5)"
+                />
+
+                <ellipse
+                    class="petalo"
+                    cx="-6.5"
+                    cy="6.5"
+                    rx="4"
+                    ry="8"
+                    transform="rotate(45 -6.5 6.5)"
+                />
+
+                <ellipse
+                    class="petalo"
+                    cx="6.5"
+                    cy="6.5"
+                    rx="4"
+                    ry="8"
+                    transform="rotate(-45 6.5 6.5)"
+                />
+            </g>
+
+            <circle class="centro-flor" cx="0" cy="0" r="5" />
+
+        </g>
+
+
+        <!-- ========================================
+             FLOR 2 — DERECHA INFERIOR
+             ======================================== -->
+
+        <g class="flor-svg flor-2" transform="translate(127 47)">
+
+            <g class="petalos">
+                <ellipse class="petalo" cx="0" cy="-9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="0" cy="9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="-9" cy="0" rx="9" ry="4" />
+                <ellipse class="petalo" cx="9" cy="0" rx="9" ry="4" />
+            </g>
+
+            <circle class="centro-flor" cx="0" cy="0" r="5" />
+
+        </g>
+
+
+        <!-- ========================================
+             FLOR 3 — IZQUIERDA SUPERIOR
+             ======================================== -->
+
+        <g class="flor-svg flor-3" transform="translate(72 30)">
+
+            <g class="petalos">
+                <ellipse class="petalo" cx="0" cy="-9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="0" cy="9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="-9" cy="0" rx="9" ry="4" />
+                <ellipse class="petalo" cx="9" cy="0" rx="9" ry="4" />
+            </g>
+
+            <circle class="centro-flor" cx="0" cy="0" r="5" />
+
+        </g>
+
+
+        <!-- ========================================
+             FLOR 4 — DERECHA SUPERIOR
+             ======================================== -->
+
+        <g class="flor-svg flor-4" transform="translate(116 19)">
+
+            <g class="petalos">
+                <ellipse class="petalo" cx="0" cy="-9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="0" cy="9" rx="4" ry="9" />
+                <ellipse class="petalo" cx="-9" cy="0" rx="9" ry="4" />
+                <ellipse class="petalo" cx="9" cy="0" rx="9" ry="4" />
+            </g>
+
+            <circle class="centro-flor" cx="0" cy="0" r="5" />
+
+        </g>
+
+
+        <!-- ========================================
+             FLOR 5 — CENTRAL
+             ======================================== -->
+
+        <g class="flor-svg flor-5" transform="translate(96 23)">
+
+            <g class="petalos">
+                <ellipse class="petalo" cx="0" cy="-10" rx="4.5" ry="10" />
+                <ellipse class="petalo" cx="0" cy="10" rx="4.5" ry="10" />
+                <ellipse class="petalo" cx="-10" cy="0" rx="10" ry="4.5" />
+                <ellipse class="petalo" cx="10" cy="0" rx="10" ry="4.5" />
+
+                <ellipse
+                    class="petalo"
+                    cx="-7"
+                    cy="-7"
+                    rx="4"
+                    ry="9"
+                    transform="rotate(-45 -7 -7)"
+                />
+
+                <ellipse
+                    class="petalo"
+                    cx="7"
+                    cy="-7"
+                    rx="4"
+                    ry="9"
+                    transform="rotate(45 7 -7)"
+                />
+
+                <ellipse
+                    class="petalo"
+                    cx="-7"
+                    cy="7"
+                    rx="4"
+                    ry="9"
+                    transform="rotate(45 -7 7)"
+                />
+
+                <ellipse
+                    class="petalo"
+                    cx="7"
+                    cy="7"
+                    rx="4"
+                    ry="9"
+                    transform="rotate(-45 7 7)"
+                />
+            </g>
+
+            <circle class="centro-flor" cx="0" cy="0" r="5.5" />
+
+        </g>
+
+    </svg>
+
+</div>
+
+           <!-- ========================================
+     MENSAJE ANTES DE LA FLORACIÓN
+     ======================================== -->
+
+<p
+    class="mensaje mensaje-planta"
+    id="mensajePlanta">
+
+    No son exactamente<br>
+    las que debería darte...
+
+</p>
+
+
+<!-- ========================================
+     MENSAJE DESPUÉS DE LA FLORACIÓN
+     ======================================== -->
+
+<p
+    class="mensaje mensaje-floracion oculta"
+    id="mensajeFloracion">
+
+    No pude llevártelas en persona...<br>
+    así que hice que florecieran<br>
+    aquí para ti. 💛
+
+</p>
+
+
+<!-- ========================================
+     BOTÓN PARA GERMINAR
+     ======================================== -->
+
+<button
+    class="boton-continuar"
+    id="btnDescubrir">
+
+    A ver...
+
+</button>
+
+
+<!-- ========================================
+     BOTÓN PARA FLORECER
+     ======================================== -->
+
+<button
+    class="boton-continuar boton-siguiente-planta oculta"
+    id="btnSeguirPlanta">
+
+    Un poquito más...
+
+</button>
+
+
+<!-- ========================================
+     BOTÓN PARA EL CIERRE
+     ======================================== -->
+
+<button
+    class="boton-continuar boton-cierre oculta"
+    id="btnCierre">
+
+    Una última cosa...
+
+</button>
+
+        </section>
+
+        <!-- ========================================
+     PANTALLA 4 — CIERRE
+     ======================================== -->
+
+<section
+    class="pantalla pantalla-cierre oculta"
+    id="pantallaCierre">
+
+    <span class="destello">✦</span>
+
+    <p class="cierre-linea cierre-linea-1">
+        Y bueno...
+    </p>
+
+    <p class="cierre-linea cierre-linea-2">
+        Sé que no es lo mismo<br>
+        que recibirlas en persona,
+    </p>
+
+    <p class="cierre-linea cierre-linea-3">
+        pero quería tener un pequeño<br>
+        detalle contigo y demostrarte un poco de mi cariño.
+    </p>
+
+    <div class="cierre-final">
+
+        <span class="cierre-fecha">
+            Feliz 21 de septiembre, Te quiero mucho. 💛
+        </span>
+
+        <span class="cierre-nombre">
+            Lía. 💛
+        </span>
+
+    </div>
+
+    <span class="destello cierre-destello">✦</span>
+
+</section>
+
+    </main>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+         ======================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1850 @@
+/* ========================================
+   CONFIGURACIÓN GENERAL
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    /* Fondo oscuro con un ligero brillo dorado */
+    background:
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(212, 169, 32, 0.10),
+            transparent 45%
+        ),
+        #080808;
+
+    color: #f5f1e8;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+
+.app {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    /* Mantiene el contenido encima de los destellos */
+    z-index: 1;
+}
+
+
+/* ========================================
+   FONDO DE DESTELLOS
+   ======================================== */
+
+.fondo-destellos {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    /* Los destellos no interfieren con botones */
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* ========================================
+   PARTÍCULAS DORADAS
+   ======================================== */
+
+.particula {
+    position: absolute;
+
+    bottom: -20px;
+
+    width: 4px;
+    height: 4px;
+
+    background: #f0ca55;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 6px rgba(240, 202, 85, 0.9),
+        0 0 14px rgba(240, 202, 85, 0.45);
+
+    animation:
+        subirParticula linear infinite,
+        parpadear ease-in-out infinite;
+}
+
+
+/* Algunas partículas serán estrellas */
+
+.particula.destello-fondo {
+    width: 6px;
+    height: 6px;
+
+    background: transparent;
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+
+.particula.destello-fondo::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #f0ca55;
+
+    font-size: 13px;
+
+    text-shadow:
+        0 0 7px rgba(240, 202, 85, 0.9),
+        0 0 16px rgba(240, 202, 85, 0.45);
+}
+
+
+/* ========================================
+   MOVIMIENTO DE LAS PARTÍCULAS
+   ======================================== */
+
+@keyframes subirParticula {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.75;
+    }
+
+    50% {
+        opacity: 0.55;
+    }
+
+    80% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+
+@keyframes parpadear {
+
+    0%,
+    100% {
+        filter: brightness(0.7);
+    }
+
+    50% {
+        filter: brightness(1.6);
+    }
+}
+
+
+/* ========================================
+   PANTALLAS
+   ======================================== */
+
+.pantalla {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px 24px;
+}
+
+
+/* ========================================
+   PANTALLA DE INICIO
+   ======================================== */
+
+.pantalla-inicio {
+    gap: 28px;
+
+    animation: aparecerPantalla 1.4s ease forwards;
+}
+
+
+/* ========================================
+   DESTELLO PRINCIPAL
+   ======================================== */
+
+.destello {
+    font-size: 27px;
+
+    color: #e4b936;
+
+    text-shadow:
+        0 0 8px rgba(228, 185, 54, 0.6),
+        0 0 18px rgba(228, 185, 54, 0.25);
+
+    animation: brilloDestello 2.5s ease-in-out infinite;
+}
+
+
+/* ========================================
+   FECHA
+   ======================================== */
+
+.pantalla-inicio h1 {
+    font-size: clamp(29px, 8vw, 38px);
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+    color: #f0ca55;
+
+    text-shadow:
+        0 0 12px rgba(240, 202, 85, 0.15);
+}
+
+
+/* ========================================
+   MENSAJE
+   ======================================== */
+
+.mensaje {
+    font-size: clamp(17px, 4.7vw, 20px);
+
+    line-height: 1.8;
+
+    color: #e8e3d8;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* ========================================
+   BOTÓN
+   ======================================== */
+
+.boton-continuar {
+    margin-top: 10px;
+
+    padding: 14px 38px;
+
+    border: 1px solid rgba(240, 202, 85, 0.65);
+
+    border-radius: 30px;
+
+    background: rgba(240, 202, 85, 0.08);
+
+    color: #f0ca55;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(240, 202, 85, 0.08);
+
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.boton-continuar:hover {
+    background: rgba(240, 202, 85, 0.17);
+
+    box-shadow:
+        0 0 12px rgba(240, 202, 85, 0.20),
+        0 0 30px rgba(240, 202, 85, 0.10);
+
+    transform: translateY(-2px);
+}
+
+
+.boton-continuar:active {
+    transform: scale(0.96);
+}
+
+
+/* ========================================
+   ANIMACIÓN DE ENTRADA
+   ======================================== */
+
+@keyframes aparecerPantalla {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN DEL DESTELLO PRINCIPAL
+   ======================================== */
+
+@keyframes brilloDestello {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+
+/* ========================================
+   AJUSTES PARA PANTALLAS GRANDES
+   ======================================== */
+
+@media (min-width: 768px) {
+
+    .pantalla {
+        padding: 40px;
+    }
+
+    .pantalla-inicio {
+        gap: 32px;
+    }
+}
+/* ========================================
+   ELEMENTOS OCULTOS
+   ======================================== */
+
+.oculta {
+    display: none;
+}
+
+
+/* ========================================
+   PANTALLA DE DISTANCIA
+   ======================================== */
+
+.pantalla-distancia {
+    gap: 24px;
+}
+
+
+/* Texto pequeño superior */
+
+.texto-secundario {
+    font-size: 17px;
+
+    color: #cfc8b8;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* Texto destacado */
+
+.pantalla-distancia h2 {
+    font-size: clamp(30px, 9vw, 42px);
+
+    font-weight: normal;
+
+    color: #f0ca55;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 10px rgba(240, 202, 85, 0.18),
+        0 0 25px rgba(240, 202, 85, 0.08);
+}
+/* ========================================
+   TRANSICIONES ENTRE PANTALLAS
+   ======================================== */
+
+/* Pantalla que está desapareciendo */
+
+.saliendo {
+    animation: salirPantalla 0.7s ease forwards;
+}
+
+
+/* Pantalla que está apareciendo */
+
+.entrando {
+    animation: entrarPantalla 0.9s ease forwards;
+}
+
+
+/* ========================================
+   ANIMACIÓN DE SALIDA
+   ======================================== */
+
+@keyframes salirPantalla {
+
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-18px);
+        filter: blur(4px);
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN DE ENTRADA
+   ======================================== */
+
+@keyframes entrarPantalla {
+
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+/* ========================================
+   PANTALLA 3 — IMPROVISACIÓN
+   ======================================== */
+
+.pantalla-improvisar {
+    /* Forzamos la organización vertical */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+
+    gap: 18px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+}
+
+
+/* ========================================
+   TEXTO "ASÍ QUE..."
+   ======================================== */
+
+.pantalla-improvisar .texto-secundario {
+    width: 100%;
+
+    margin: 0;
+
+    text-align: center;
+
+    flex: none;
+}
+
+
+/* ========================================
+   TÍTULO PRINCIPAL
+   ======================================== */
+
+.pantalla-improvisar h2 {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0;
+
+    font-size: clamp(28px, 7vw, 40px);
+    font-weight: normal;
+
+    line-height: 1.15;
+
+    color: #f0ca55;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 10px rgba(240, 202, 85, 0.20),
+        0 0 25px rgba(240, 202, 85, 0.08);
+
+    flex: none;
+}
+
+
+/* ========================================
+   ZONA DE LA PLANTA
+   ======================================== */
+
+.pantalla-improvisar .zona-planta {
+    position: relative;
+
+    width: 190px;
+    height: 170px;
+
+    margin: 0 auto;
+
+    display: block;
+
+    flex: none;
+}
+
+
+/* ========================================
+   MENSAJE DEBAJO DE LA PLANTA
+   ======================================== */
+
+.pantalla-improvisar .mensaje-planta {
+    display: block;
+
+    width: 100%;
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    font-size: clamp(17px, 4.7vw, 20px);
+
+    line-height: 1.6;
+
+    text-align: center;
+
+    flex: none;
+}
+
+
+/* ========================================
+   BOTÓN "A VER..."
+   ======================================== */
+
+.pantalla-improvisar #btnDescubrir {
+    display: block;
+
+    margin: 4px auto 0;
+
+    flex: none;
+}
+
+
+/* ========================================
+   TELÉFONOS PEQUEÑOS
+   ======================================== */
+
+@media (max-height: 700px) {
+
+    .pantalla-improvisar {
+        gap: 11px;
+
+        justify-content: center;
+
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+
+    .pantalla-improvisar h2 {
+        font-size: clamp(25px, 7vw, 34px);
+    }
+
+
+    .pantalla-improvisar .zona-planta {
+        width: 170px;
+        height: 145px;
+    }
+
+
+    .pantalla-improvisar .mensaje-planta {
+        line-height: 1.4;
+    }
+}
+
+
+/* ========================================
+   SEMILLA
+   ======================================== */
+
+.semilla {
+    width: 14px;
+    height: 9px;
+
+    background: #a87b32;
+
+    border-radius: 60% 40% 60% 40%;
+
+    transform: rotate(-15deg);
+
+    box-shadow:
+        0 0 6px rgba(168, 123, 50, 0.5),
+        0 0 15px rgba(240, 202, 85, 0.08);
+}
+
+
+/* Texto debajo de la planta */
+
+.mensaje-planta {
+    margin-top: 3px;
+}
+/* ========================================
+   GERMINACIÓN DE LA PLANTA — SVG
+   ======================================== */
+
+
+/* ========================================
+   PLANTA SVG
+   ======================================== */
+
+.planta-svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 170px;
+    height: 150px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center;
+
+    overflow: visible;
+}
+
+
+/* ========================================
+   RESPLANDOR DE LA PLANTA
+   ======================================== */
+
+.brillo-planta {
+    position: absolute;
+
+    left: 50%;
+    bottom: 5px;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(240, 202, 85, 0.20) 0%,
+        rgba(240, 202, 85, 0.08) 40%,
+        transparent 72%
+    );
+
+    transform:
+        translateX(-50%)
+        scale(0.2);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   SEMILLA SVG
+   ======================================== */
+
+.semilla-svg {
+    fill: #a8752d;
+
+    stroke: #d39b42;
+    stroke-width: 1;
+
+    transform-box: fill-box;
+    transform-origin: center;
+
+    filter:
+        drop-shadow(
+            0 0 4px
+            rgba(211, 155, 66, 0.4)
+        );
+}
+
+
+/* ========================================
+   TALLO CURVO
+   ======================================== */
+
+.tallo-svg {
+    fill: none;
+
+    stroke: #6d9b4d;
+    stroke-width: 4;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    /*
+       El trazo existe, pero inicialmente
+       está completamente oculto.
+    */
+
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+
+    filter:
+        drop-shadow(
+            0 0 3px
+            rgba(109, 155, 77, 0.3)
+        );
+}
+
+
+/* ========================================
+   HOJAS
+   ======================================== */
+
+.hoja-svg {
+    fill: #63964b;
+
+    stroke: #79aa58;
+    stroke-width: 1;
+
+    opacity: 0;
+
+    transform-box: fill-box;
+}
+
+
+/* Hoja izquierda */
+
+.hoja-svg-izquierda {
+    transform-origin: right center;
+
+    transform:
+        rotate(20deg)
+        scale(0);
+}
+
+
+/* Hoja derecha */
+
+.hoja-svg-derecha {
+    transform-origin: left center;
+
+    transform:
+        rotate(-20deg)
+        scale(0);
+}
+
+
+/* ========================================
+   PUNTA DEL BROTE
+   ======================================== */
+
+.brote-svg {
+    fill: none;
+
+    stroke: #80ad5c;
+    stroke-width: 3;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+
+    filter:
+        drop-shadow(
+            0 0 3px
+            rgba(128, 173, 92, 0.25)
+        );
+}
+
+
+/* ========================================
+   ESTADO: GERMINANDO
+   ======================================== */
+
+
+/* Resplandor */
+
+.zona-planta.germinando .brillo-planta {
+    animation:
+        nuevoBrillo 3.5s ease forwards;
+}
+
+
+/* La semilla reacciona */
+
+.zona-planta.germinando .semilla-svg {
+    animation:
+        semillaViva 0.9s ease forwards;
+}
+
+
+/* El tallo comienza a dibujarse */
+
+.zona-planta.germinando .tallo-svg {
+    animation:
+        dibujarTallo
+        2.7s
+        cubic-bezier(0.45, 0, 0.25, 1)
+        0.55s
+        forwards;
+}
+
+
+/* Primera hoja */
+
+.zona-planta.germinando .hoja-svg-izquierda {
+    animation:
+        abrirHojaIzquierda
+        0.9s
+        ease-out
+        1.55s
+        forwards;
+}
+
+
+/* Segunda hoja */
+
+.zona-planta.germinando .hoja-svg-derecha {
+    animation:
+        abrirHojaDerecha
+        0.9s
+        ease-out
+        2.25s
+        forwards;
+}
+
+
+/* Punta final */
+
+.zona-planta.germinando .brote-svg {
+    animation:
+        dibujarBrote
+        0.7s
+        ease
+        2.75s
+        forwards;
+}
+
+
+/* ========================================
+   ANIMACIÓN DE LA SEMILLA
+   ======================================== */
+
+@keyframes semillaViva {
+
+    0% {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+    20% {
+        transform:
+            rotate(-6deg)
+            scale(1.05);
+    }
+
+    40% {
+        transform:
+            rotate(5deg)
+            scale(1.12);
+    }
+
+    60% {
+        transform:
+            rotate(-4deg)
+            scale(1.08);
+    }
+
+    80% {
+        transform:
+            rotate(3deg)
+            scale(1.04);
+    }
+
+    100% {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   CRECIMIENTO DEL TALLO
+   ======================================== */
+
+@keyframes dibujarTallo {
+
+    from {
+        stroke-dashoffset: 150;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* ========================================
+   APARICIÓN HOJA IZQUIERDA
+   ======================================== */
+
+@keyframes abrirHojaIzquierda {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotate(25deg)
+            scale(0);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            rotate(5deg)
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   APARICIÓN HOJA DERECHA
+   ======================================== */
+
+@keyframes abrirHojaDerecha {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotate(-25deg)
+            scale(0);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            rotate(-5deg)
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   PUNTA DEL BROTE
+   ======================================== */
+
+@keyframes dibujarBrote {
+
+    from {
+        stroke-dashoffset: 30;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* ========================================
+   RESPLANDOR DE GERMINACIÓN
+   ======================================== */
+
+@keyframes nuevoBrillo {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(0.2);
+    }
+
+    20% {
+        opacity: 0.85;
+
+        transform:
+            translateX(-50%)
+            scale(0.65);
+    }
+
+    50% {
+        opacity: 0.60;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    80% {
+        opacity: 0.40;
+
+        transform:
+            translateX(-50%)
+            scale(1.35);
+    }
+
+    100% {
+        opacity: 0.25;
+
+        transform:
+            translateX(-50%)
+            scale(1.55);
+    }
+}
+/* ========================================
+   FLORACIÓN — SEGUNDA ETAPA
+   ======================================== */
+
+
+/* ========================================
+   RAMAS
+   ======================================== */
+
+.rama-svg {
+    fill: none;
+    stroke: #6d9b4d;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+
+    filter:
+        drop-shadow(
+            0 0 3px
+            rgba(109, 155, 77, 0.25)
+        );
+}
+
+
+/* ========================================
+   CAPULLOS
+   ======================================== */
+
+.capullo {
+    opacity: 0;
+
+    fill: #789f4f;
+    stroke: #9dbb61;
+    stroke-width: 1;
+
+    transform-box: fill-box;
+    transform-origin: center;
+
+    transform: scale(0);
+}
+
+
+/* ========================================
+   FLORES
+   ======================================== */
+
+.flor-svg {
+    opacity: 0;
+
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+
+/* Pétalos */
+
+.petalo {
+    fill: #f1c84b;
+    stroke: #f6dc76;
+    stroke-width: 0.7;
+
+    filter:
+        drop-shadow(
+            0 0 3px
+            rgba(240, 202, 85, 0.45)
+        );
+}
+
+
+/* Centro de cada flor */
+
+.centro-flor {
+    fill: #a86f24;
+    stroke: #d69a38;
+    stroke-width: 1;
+
+    filter:
+        drop-shadow(
+            0 0 2px
+            rgba(168, 111, 36, 0.5)
+        );
+}
+
+
+/* ========================================
+   RESPLANDOR DE FLORACIÓN
+   ======================================== */
+
+.brillo-floracion {
+    position: absolute;
+
+    left: 50%;
+    top: 42%;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(240, 202, 85, 0.22) 0%,
+            rgba(240, 202, 85, 0.10) 35%,
+            transparent 72%
+        );
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.3);
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   ESTADO: FLORECIENDO
+   ======================================== */
+
+
+/* Primera rama */
+
+.zona-planta.floreciendo .rama-1 {
+    animation:
+        crecerRama
+        0.9s
+        ease
+        forwards;
+}
+
+
+/* Segunda rama */
+
+.zona-planta.floreciendo .rama-2 {
+    animation:
+        crecerRama
+        0.9s
+        ease
+        0.35s
+        forwards;
+}
+
+
+/* Tercera rama */
+
+.zona-planta.floreciendo .rama-3 {
+    animation:
+        crecerRama
+        0.9s
+        ease
+        0.70s
+        forwards;
+}
+
+
+/* Cuarta rama */
+
+.zona-planta.floreciendo .rama-4 {
+    animation:
+        crecerRama
+        0.9s
+        ease
+        1.05s
+        forwards;
+}
+
+
+/* ========================================
+   APARICIÓN DE CAPULLOS
+   ======================================== */
+
+.zona-planta.floreciendo .capullo-1 {
+    animation:
+        aparecerCapullo
+        0.55s
+        ease-out
+        0.65s
+        forwards;
+}
+
+.zona-planta.floreciendo .capullo-2 {
+    animation:
+        aparecerCapullo
+        0.55s
+        ease-out
+        1s
+        forwards;
+}
+
+.zona-planta.floreciendo .capullo-3 {
+    animation:
+        aparecerCapullo
+        0.55s
+        ease-out
+        1.35s
+        forwards;
+}
+
+.zona-planta.floreciendo .capullo-4 {
+    animation:
+        aparecerCapullo
+        0.55s
+        ease-out
+        1.70s
+        forwards;
+}
+
+.zona-planta.floreciendo .capullo-5 {
+    animation:
+        aparecerCapullo
+        0.55s
+        ease-out
+        2.05s
+        forwards;
+}
+
+
+/* ========================================
+   APERTURA DE FLORES
+   ======================================== */
+
+.zona-planta.floreciendo .flor-1 {
+    animation:
+        abrirFlor
+        0.8s
+        cubic-bezier(0.2, 0.8, 0.3, 1.25)
+        1.35s
+        forwards;
+}
+
+.zona-planta.floreciendo .flor-2 {
+    animation:
+        abrirFlor
+        0.8s
+        cubic-bezier(0.2, 0.8, 0.3, 1.25)
+        1.70s
+        forwards;
+}
+
+.zona-planta.floreciendo .flor-3 {
+    animation:
+        abrirFlor
+        0.8s
+        cubic-bezier(0.2, 0.8, 0.3, 1.25)
+        2.05s
+        forwards;
+}
+
+.zona-planta.floreciendo .flor-4 {
+    animation:
+        abrirFlor
+        0.8s
+        cubic-bezier(0.2, 0.8, 0.3, 1.25)
+        2.40s
+        forwards;
+}
+
+
+/* La flor central aparece al final */
+
+.zona-planta.floreciendo .flor-5 {
+    animation:
+        abrirFlor
+        1s
+        cubic-bezier(0.2, 0.8, 0.3, 1.25)
+        2.80s
+        forwards;
+}
+
+
+/* Resplandor final */
+
+.zona-planta.floreciendo .brillo-floracion {
+    animation:
+        brilloFloracion
+        1.8s
+        ease
+        2.70s
+        forwards;
+}
+
+
+/* ========================================
+   ANIMACIÓN — CRECER RAMAS
+   ======================================== */
+
+@keyframes crecerRama {
+
+    from {
+        stroke-dashoffset: 80;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN — CAPULLOS
+   ======================================== */
+
+@keyframes aparecerCapullo {
+
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    65% {
+        opacity: 1;
+        transform: scale(1.20);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN — ABRIR FLORES
+   ======================================== */
+
+@keyframes abrirFlor {
+
+    0% {
+        opacity: 0;
+        scale: 0.10;
+        rotate: -10deg;
+    }
+
+    60% {
+        opacity: 1;
+        scale: 1.15;
+        rotate: 3deg;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        rotate: 0deg;
+    }
+}
+
+
+/* ========================================
+   RESPLANDOR FINAL
+   ======================================== */
+
+@keyframes brilloFloracion {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.3);
+    }
+
+    45% {
+        opacity: 0.75;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0.28;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.35);
+    }
+}
+
+
+/* ========================================
+   DESAPARECER BOTÓN AL GERMINAR
+   ======================================== */
+
+.boton-desapareciendo {
+    animation:
+        desaparecerBoton
+        0.5s
+        ease
+        forwards;
+
+    pointer-events: none;
+}
+
+
+@keyframes desaparecerBoton {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.90);
+    }
+}
+/* ========================================
+   APARICIÓN DEL SIGUIENTE BOTÓN
+   ======================================== */
+
+.boton-apareciendo {
+    animation:
+        aparecerBoton 0.9s ease forwards;
+}
+
+
+@keyframes aparecerBoton {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+/* ========================================
+   AJUSTES FINALES DE LA FLORACIÓN
+   ======================================== */
+
+
+/* ========================================
+   CRECIMIENTO DEL RAMO
+   ======================================== */
+
+.zona-planta.floreciendo .planta-svg {
+    animation:
+        ampliarPlantaFlorecida
+        1.8s
+        cubic-bezier(0.22, 0.8, 0.3, 1)
+        forwards;
+}
+
+
+/* ========================================
+   DESAPARICIÓN DE LA SEMILLA
+   ======================================== */
+
+.zona-planta.floreciendo .semilla-svg {
+    animation:
+        ocultarSemilla
+        0.8s
+        ease
+        forwards;
+}
+
+
+/* ========================================
+   ANIMACIÓN — AGRANDAR RAMO
+   ======================================== */
+
+@keyframes ampliarPlantaFlorecida {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.28);
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN — OCULTAR SEMILLA
+   ======================================== */
+
+@keyframes ocultarSemilla {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+/* ========================================
+   TRANSICIÓN DE MENSAJES DESPUÉS
+   DE LA FLORACIÓN
+   ======================================== */
+
+
+/* ========================================
+   DESAPARECER MENSAJE ANTERIOR
+   ======================================== */
+
+.mensaje-desapareciendo {
+    animation:
+        desaparecerMensaje
+        0.6s
+        ease
+        forwards;
+}
+
+
+/* ========================================
+   APARECER MENSAJE NUEVO
+   ======================================== */
+
+.mensaje-apareciendo {
+    animation:
+        aparecerMensajeFloracion
+        0.9s
+        ease
+        forwards;
+}
+
+
+/* ========================================
+   ANIMACIÓN — DESAPARECER MENSAJE
+   ======================================== */
+
+@keyframes desaparecerMensaje {
+
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+        filter: blur(3px);
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN — APARECER MENSAJE NUEVO
+   ======================================== */
+
+@keyframes aparecerMensajeFloracion {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+/* ========================================
+   PANTALLA 4 — CIERRE
+   ======================================== */
+
+.pantalla-cierre {
+    gap: 24px;
+    padding: 35px 24px;
+}
+
+
+/* Las frases empiezan invisibles */
+
+.cierre-linea,
+.cierre-final,
+.cierre-destello {
+    opacity: 0;
+}
+
+
+/* Texto normal */
+
+.cierre-linea {
+    max-width: 360px;
+
+    font-size: clamp(17px, 4.8vw, 20px);
+
+    line-height: 1.7;
+
+    color: #e8e3d8;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* Primera frase */
+
+.cierre-linea-1 {
+    color: #cfc8b8;
+
+    font-size: 17px;
+}
+
+
+/* ========================================
+   MENSAJE FINAL
+   ======================================== */
+
+.cierre-final {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+
+/* Feliz 21 de septiembre */
+
+.cierre-fecha {
+    font-size: clamp(19px, 5.3vw, 23px);
+
+    color: #e8e3d8;
+}
+
+
+/* LÍA */
+
+.cierre-nombre {
+    font-size: clamp(30px, 8vw, 40px);
+
+    color: #f0ca55;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 10px rgba(240, 202, 85, 0.30),
+        0 0 25px rgba(240, 202, 85, 0.15);
+}
+
+
+/* ========================================
+   ACTIVAR SECUENCIA DEL CIERRE
+   ======================================== */
+
+.pantalla-cierre.animar-cierre .cierre-linea-1 {
+    animation:
+        aparecerLineaCierre
+        0.9s
+        ease
+        0.4s
+        forwards;
+}
+
+
+.pantalla-cierre.animar-cierre .cierre-linea-2 {
+    animation:
+        aparecerLineaCierre
+        0.9s
+        ease
+        1.5s
+        forwards;
+}
+
+
+.pantalla-cierre.animar-cierre .cierre-linea-3 {
+    animation:
+        aparecerLineaCierre
+        0.9s
+        ease
+        2.8s
+        forwards;
+}
+
+
+.pantalla-cierre.animar-cierre .cierre-final {
+    animation:
+        aparecerFinal
+        1.2s
+        ease
+        4.2s
+        forwards;
+}
+
+
+.pantalla-cierre.animar-cierre .cierre-destello {
+    animation:
+        aparecerDestelloFinal
+        1.2s
+        ease
+        5.5s
+        forwards;
+}
+
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes aparecerLineaCierre {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+
+        filter:
+            blur(3px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes aparecerFinal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.96);
+
+        filter:
+            blur(4px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes aparecerDestelloFinal {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+
+    100% {
+        opacity: 0.75;
+        transform: scale(1);
+    }
+}
+/* ========================================
+   OCULTAR PANTALLAS CORRECTAMENTE
+   ======================================== */
+
+.pantalla.oculta {
+    display: none !important;
+}
